@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<spriteSheet filename="player_green_spritesheet.png">
+    <entityType name="PLAYER">
+        <direction name="NORTH" mirroring="false"> <!-- mirroring sprites? -->
+            0 194 648 97 <!-- left top width height -->
+        </direction>
+        <direction name="EAST" mirroring="false">
+            0 0 648 97
+        </direction>
+        <direction name="SOUTH" mirroring="false">
+            0 97 648 97
+        </direction>
+        <direction name="WEST" mirroring="true">
+            0 0 648 97
+        </direction>
+    </entityType>
+
+    <entityType name="WALL">
+
+    </entityType>
+
+
+
+</spriteSheet>
