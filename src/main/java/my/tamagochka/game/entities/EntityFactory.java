@@ -1,11 +1,16 @@
 package my.tamagochka.game.entities;
 
+import my.tamagochka.graphics.textureAtlas.DataOfAtlas;
 import my.tamagochka.graphics.SpriteSheet;
-import my.tamagochka.graphics.TextureAtlas;
+import my.tamagochka.graphics.textureAtlas.TextureAtlas;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public class EntityFactory {
+
+    private Map<DataOfAtlas, TextureAtlas> atlases = new HashMap<>();
+
 
     private EntityType type;
     private TextureAtlas atlas;
@@ -23,7 +28,7 @@ public class EntityFactory {
         this.spriteHeight = spriteHeight;
         this.scaleSize = scaleSize;
 
-        spriteMap.put(DirectionMoving.NORTH, );
+//        spriteMap.put(DirectionMoving.NORTH, );
 
 
 

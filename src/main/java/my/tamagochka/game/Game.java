@@ -1,10 +1,7 @@
 package my.tamagochka.game;
 
 import my.tamagochka.display.Display;
-import my.tamagochka.game.entities.EntityFactory;
-import my.tamagochka.game.entities.EntityType;
-import my.tamagochka.game.entities.Player;
-import my.tamagochka.graphics.TextureAtlas;
+import my.tamagochka.graphics.textureAtlas.AtlasManager;
 import my.tamagochka.utilities.ResourceLoader;
 
 import java.awt.event.WindowAdapter;
@@ -24,7 +21,7 @@ public class Game implements Runnable {
     private final float UPDATE_INTERVAL = TimeUnit.SECONDS.toNanos(1) / UPDATE_RATE;
     private final long IDLE_TIME = 1;
 
-    private final String ATLAS_FILENAME = "textures.png";
+    private final String ATLAS_FILENAME = "player_green_spritesheet.xml";
 
     private Thread gameThread;
     private boolean running = false;
@@ -41,12 +38,13 @@ public class Game implements Runnable {
 
         ResourceLoader loader = new ResourceLoader("resources/");
 
+        AtlasManager atlasManager = new AtlasManager();
+        atlasManager.addAtlas(loader, loader, ATLAS_FILENAME);
 
-        TextureAtlas atlas = new TextureAtlas(loader, ATLAS_FILENAME);
 
-
-        EntityFactory factory = new EntityFactory(EntityType.PLAYER, atlas, );
-        Player player =
+//        TextureAtlas atlas = new TextureAtlas(loader, ATLAS_FILENAME);
+//        EntityFactory factory = new EntityFactory(EntityType.PLAYER, atlas, ); // TODO creating factory
+//        Player player = // TODO call factory
 
 
 

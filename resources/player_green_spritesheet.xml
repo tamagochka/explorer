@@ -1,24 +1,28 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<spriteSheet filename="player_green_spritesheet.png">
-    <entityType name="PLAYER">
-        <direction name="NORTH" mirroring="false"> <!-- mirroring sprites? -->
-            0 194 648 97 <!-- left top width height -->
-        </direction>
-        <direction name="EAST" mirroring="false">
-            0 0 648 97
-        </direction>
-        <direction name="SOUTH" mirroring="false">
-            0 97 648 97
-        </direction>
-        <direction name="WEST" mirroring="true">
-            0 0 648 97
-        </direction>
-    </entityType>
+<textureAtlas file="player_green_spritesheet.png">
+    <entities>
+        <entity name="PLAYER">
+            <spriteSheets>
+                <spriteSheet name="NORTH">
+                    <l>0</l><t>194</t><w>72</w><h>97</h>
+                    <m>false</m>
+                </spriteSheet>
+                <spriteSheet name="EAST">
+                    <l>0</l><t>0</t><w>72</w><h>97</h>
+                    <m>false</m>
+                </spriteSheet>
+                <spriteSheet name="SOUTH">
+                    <l>0</l><t>97</t><w>72</w><h>97</h>
+                    <m>false</m>
+                </spriteSheet>
+                <spriteSheet name="WEST">
+                    <l>0</l><t>0</t><w>72</w><h>97</h>
+                    <m>true</m>
+                </spriteSheet>
+            </spriteSheets>
+        </entity>
 
-    <entityType name="WALL">
-
-    </entityType>
 
 
-
-</spriteSheet>
+    </entities>
+</textureAtlas>

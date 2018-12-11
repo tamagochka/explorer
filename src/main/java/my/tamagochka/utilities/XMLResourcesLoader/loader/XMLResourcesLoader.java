@@ -1,4 +1,4 @@
-package my.tamagochka.utilities;
+package my.tamagochka.utilities.XMLResourcesLoader.loader;
 
 import org.xml.sax.SAXException;
 
