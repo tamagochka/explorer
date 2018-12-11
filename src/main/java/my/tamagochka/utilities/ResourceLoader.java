@@ -5,11 +5,12 @@ import my.tamagochka.graphics.textureAtlas.XMLLoader;
 import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
 
+import javax.imageio.ImageIO;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
-import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
 
 public class ResourceLoader implements ImageLoader, XMLLoader {
@@ -22,7 +23,12 @@ public class ResourceLoader implements ImageLoader, XMLLoader {
 
     @Override
     public BufferedImage loadImage(String fileName) {
-        BufferedImage image = (BufferedImage)Toolkit.getDefaultToolkit().getImage(PATH + fileName);
+        BufferedImage image = null;
+        try {
+            image = ImageIO.read(new File(PATH + fileName));
+        } catch(IOException e) {
+            e.printStackTrace();
+        }
         return image;
     }
 

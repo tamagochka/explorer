@@ -1,41 +1,27 @@
 package my.tamagochka.game.entities;
 
-import my.tamagochka.graphics.textureAtlas.DataOfAtlas;
-import my.tamagochka.graphics.SpriteSheet;
-import my.tamagochka.graphics.textureAtlas.TextureAtlas;
+import my.tamagochka.graphics.sprites.SpriteSheet;
+import my.tamagochka.graphics.textureAtlas.AtlasManager;
 
-import java.util.HashMap;
 import java.util.Map;
 
 public class EntityFactory {
 
-    private Map<DataOfAtlas, TextureAtlas> atlases = new HashMap<>();
-
-
-    private EntityType type;
-    private TextureAtlas atlas;
-    private int spriteWidth;
-    private int spriteHeight;
+    private AtlasManager atlasManager;
     private float scaleSize;
 
     private Map<DirectionMoving, SpriteSheet> spriteMap;
 
-    public EntityFactory(EntityType type, TextureAtlas atlas, int spriteWidth, int spriteHeight, float scaleSize, int[][] sheets /* TODO */) {
-
-        this.type = type;
-        this.atlas = atlas;
-        this.spriteWidth = spriteWidth;
-        this.spriteHeight = spriteHeight;
+    public EntityFactory(AtlasManager atlasManager, float scaleSize) {
+        this.atlasManager = atlasManager;
         this.scaleSize = scaleSize;
 
 //        spriteMap.put(DirectionMoving.NORTH, );
 
 
-
-
     }
 
-    public Entity build(float x, float y, DirectionMoving direction, float speed) {
+    public Entity build(EntityType type, float x, float y, DirectionMoving direction, float speed) {
         Entity entity = null;
         switch(type) {
             case PLAYER:
@@ -53,7 +39,7 @@ public class EntityFactory {
         return null;
     }
 
-    public Entity build(float x, float y) {
+    public Entity build(EntityType type, float x, float y) {
         switch(type) {
             case WALL:
 

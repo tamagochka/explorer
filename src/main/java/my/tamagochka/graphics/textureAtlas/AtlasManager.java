@@ -1,7 +1,7 @@
 package my.tamagochka.graphics.textureAtlas;
 
-import my.tamagochka.graphics.SpriteSheet;
-import my.tamagochka.utilities.Pair;
+import my.tamagochka.graphics.sprites.SpriteSheet;
+import my.tamagochka.graphics.utilities.Pair;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -20,7 +20,7 @@ public class AtlasManager {
         data.add(new Pair<>(dataOfAtlas, textureAtlas));
     }
 
-    public SpriteSheet getSpriteSheet(String entityName, String spriteSheetName, int width, int height, int spriteCount) {
+    public SpriteSheet getSpriteSheet(String entityName, String spriteSheetName) {
         for(int i = 0; i < data.size(); i++) {
             if(data.get(i).first.getEntityByName(entityName) != null) {
                 SpriteSheet spriteSheet = new SpriteSheet(
@@ -29,7 +29,10 @@ public class AtlasManager {
                                 data.get(i).first.getEntityByName(entityName).getSpriteSheetByName(spriteSheetName).getTop(),
                                 data.get(i).first.getEntityByName(entityName).getSpriteSheetByName(spriteSheetName).getWidth(),
                                 data.get(i).first.getEntityByName(entityName).getSpriteSheetByName(spriteSheetName).getHeight()
-                        ), spriteCount, width, height
+                        ),
+                        data.get(i).first.getEntityByName(entityName).getSpriteSheetByName(spriteSheetName).getSpritesCount(),
+                        data.get(i).first.getEntityByName(entityName).getSpriteSheetByName(spriteSheetName).getWidth(),
+                        data.get(i).first.getEntityByName(entityName).getSpriteSheetByName(spriteSheetName).getHeight()
                 );
                 return spriteSheet;
             }

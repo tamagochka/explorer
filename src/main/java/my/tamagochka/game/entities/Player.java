@@ -1,6 +1,6 @@
 package my.tamagochka.game.entities;
 
-import my.tamagochka.graphics.SpriteSheet;
+import my.tamagochka.graphics.sprites.SpriteSheet;
 
 import java.util.Map;
 

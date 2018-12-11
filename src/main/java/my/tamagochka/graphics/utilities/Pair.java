@@ -1,4 +1,4 @@
-package my.tamagochka.utilities;
+package my.tamagochka.graphics.utilities;
 
 public class Pair<T1, T2> {
 

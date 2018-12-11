@@ -1,4 +1,4 @@
-package my.tamagochka.graphics;
+package my.tamagochka.graphics.sprites;
 
 import java.awt.image.BufferedImage;
 

@@ -37,17 +37,20 @@ public class DataOfAtlas {
                 int t = Integer.valueOf(((Element) spriteSheet.getElementsByTagName("t").item(0)).getTextContent());
                 int w = Integer.valueOf(((Element) spriteSheet.getElementsByTagName("w").item(0)).getTextContent());
                 int h = Integer.valueOf(((Element) spriteSheet.getElementsByTagName("h").item(0)).getTextContent());
+                int sw = Integer.valueOf(((Element) spriteSheet.getElementsByTagName("sw").item(0)).getTextContent());
+                int sh = Integer.valueOf(((Element) spriteSheet.getElementsByTagName("sh").item(0)).getTextContent());
+                int sc = Integer.valueOf(((Element) spriteSheet.getElementsByTagName("sc").item(0)).getTextContent());
                 boolean m = Boolean.valueOf(((Element) spriteSheet.getElementsByTagName("m").item(0)).getTextContent());
-                DataOfSpriteSheet dataOfSpriteSheet = new DataOfSpriteSheet(l, t, w, h, m);
+                DataOfSpriteSheet dataOfSpriteSheet = new DataOfSpriteSheet(l, t, w, h, sw, sh, sc, m);
                 dataOfEntity.addSpriteSheet(spriteSheetName, dataOfSpriteSheet);
             }
 
-            this.entities.put(entityName, dataOfEntity);
+            addEntity(entityName, dataOfEntity);
         }
 
     }
 
-    public void addEntity(String entityName, DataOfEntity entity) {
+    private void addEntity(String entityName, DataOfEntity entity) {
         entities.put(entityName, entity);
     }
 
