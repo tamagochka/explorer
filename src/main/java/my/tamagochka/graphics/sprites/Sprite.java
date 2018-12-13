@@ -28,4 +28,8 @@ public class Sprite {
         g.drawImage(images.get(num), (int)x, (int)y, null);
     }
 
+    public int getCountFrames() {
+        return images.size();
+    }
+
 }

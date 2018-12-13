@@ -40,8 +40,7 @@ public class DataOfAtlas {
                 int sw = Integer.valueOf(((Element) spriteSheet.getElementsByTagName("sw").item(0)).getTextContent());
                 int sh = Integer.valueOf(((Element) spriteSheet.getElementsByTagName("sh").item(0)).getTextContent());
                 int sc = Integer.valueOf(((Element) spriteSheet.getElementsByTagName("sc").item(0)).getTextContent());
-                boolean m = Boolean.valueOf(((Element) spriteSheet.getElementsByTagName("m").item(0)).getTextContent());
-                DataOfSpriteSheet dataOfSpriteSheet = new DataOfSpriteSheet(l, t, w, h, sw, sh, sc, m);
+                DataOfSpriteSheet dataOfSpriteSheet = new DataOfSpriteSheet(l, t, w, h, sw, sh, sc);
                 dataOfEntity.addSpriteSheet(spriteSheetName, dataOfSpriteSheet);
             }
 

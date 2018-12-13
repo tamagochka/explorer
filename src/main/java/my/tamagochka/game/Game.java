@@ -56,7 +56,7 @@ public class Game implements Runnable {
         atlasManager.addAtlas(loader, loader, ATLAS_FILENAME);
 
         EntityFactory factory = new EntityFactory(atlasManager, SCALE_SIZE);
-        Player player = (Player) factory.build(EntityType.PLAYER, 100, 100, DirectionMoving.SOUTH, 3);
+        Player player = (Player) factory.build(EntityType.PLAYER, 100, 100, DirectionMoving.SOUTH, 3, 5);
 
         entities.add(player);
 
