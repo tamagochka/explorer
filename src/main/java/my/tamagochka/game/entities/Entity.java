@@ -1,7 +1,6 @@
 package my.tamagochka.game.entities;
 
 import my.tamagochka.graphics.sprites.Sprite;
-import my.tamagochka.graphics.sprites.SpriteSheet;
 
 import java.awt.*;
 import java.util.Map;
@@ -17,10 +16,10 @@ public abstract class Entity {
     private int index;
 
     private EntityType type;
-    private float x;
-    private float y;
-    private float speed;
-    private DirectionMoving direction;
+    protected float x;
+    protected float y;
+    protected float speed;
+    protected DirectionMoving direction;
     private Map<DirectionMoving, Sprite> spriteMap;
 
     protected Entity(EntityType type, float x, float y, float speed,
@@ -42,6 +41,6 @@ public abstract class Entity {
         spriteMap.get(direction).render(g, x, y, 0);
     }
 
-    protected abstract void update(/* TODO interface updater */);
+    public abstract void update(Action action);
 
 }

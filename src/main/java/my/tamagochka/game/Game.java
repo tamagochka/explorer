@@ -1,5 +1,6 @@
 package my.tamagochka.game;
 
+import my.tamagochka.IO.PerformAction;
 import my.tamagochka.display.Display;
 import my.tamagochka.game.entities.*;
 import my.tamagochka.graphics.textureAtlas.AtlasManager;
@@ -15,7 +16,7 @@ public class Game implements Runnable {
 
     private int WIDTH = 800;
     private int HEIGHT = 600;
-    private float SCALE_SIZE = 5f;
+    private float SCALE_SIZE = 1f;
     private int CLEAR_COLOR = 0xFF000000;
     private int COUNT_BUFFERS = 3;
 
@@ -34,6 +35,8 @@ public class Game implements Runnable {
 
     private Graphics2D graphics;
 
+    private PerformAction input;
+
     public Game() {
         Display.create(WIDTH, HEIGHT, TITLE, CLEAR_COLOR, COUNT_BUFFERS);
         Display.addWindowClosingListener(new WindowAdapter() {
@@ -43,18 +46,25 @@ public class Game implements Runnable {
                 super.windowClosing(e);
             }
         });
+
         graphics = Display.getGraphics();
 
         entities = new ArrayList<>();
 
         ResourceLoader loader = new ResourceLoader("resources/");
-
         AtlasManager atlasManager = new AtlasManager();
         atlasManager.addAtlas(loader, loader, ATLAS_FILENAME);
+
         EntityFactory factory = new EntityFactory(atlasManager, SCALE_SIZE);
-        Player player = (Player) factory.build(EntityType.PLAYER, 100, 100, DirectionMoving.SOUTH, 0);
+        Player player = (Player) factory.build(EntityType.PLAYER, 100, 100, DirectionMoving.SOUTH, 3);
 
         entities.add(player);
+
+        input = new PerformAction();
+        Display.addListener(input);
+
+
+
 
 
 
@@ -99,6 +109,9 @@ public class Game implements Runnable {
     }
 
     private void update() { // update state game objects
+        for(int i = 0; i < entities.size(); i++) {
+            entities.get(i).update(input);
+        }
 
     }
 

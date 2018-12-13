@@ -1,6 +1,7 @@
 package my.tamagochka.display;
 
 import java.awt.*;
+import java.awt.event.KeyListener;
 import java.awt.event.WindowListener;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
@@ -83,6 +84,10 @@ public class Display {
 
     public static void addWindowClosingListener(WindowListener closingListener) {
         instance.window.addWindowListener(closingListener);
+    }
+
+    public static void addListener(KeyListener keyListener) {
+        instance.window.addKeyListener(keyListener);
     }
 
     // TODO

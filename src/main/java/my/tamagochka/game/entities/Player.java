@@ -15,7 +15,37 @@ public class Player extends Entity {
     }
 
     @Override
-    protected void update() {
+    public void update(Action action) {
+        float newX = super.x;
+        float newY = super.y;
 
+        switch(action.getAction()) {
+            case MOVE_UP:
+                super.direction = DirectionMoving.NORTH;
+                newY -= super.speed;
+                break;
+            case MOVE_DOWN:
+                super.direction = DirectionMoving.SOUTH;
+                newY += super.speed;
+                break;
+            case MOVE_LEFT:
+                super.direction = DirectionMoving.WEST;
+                newX -= super.speed;
+                break;
+            case MOVE_RIGHT:
+                super.direction = DirectionMoving.EAST;
+                newX += super.speed;
+                break;
+            default:
+                return;
+        }
+        if((super.x != newX) || (super.y != newY)) {
+
+
+
+        }
+
+        super.x = newX;
+        super.y = newY;
     }
 }
