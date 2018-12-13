@@ -12,5 +12,4 @@ public enum EntityType {
         this.number = number;
     }
 
-
 }

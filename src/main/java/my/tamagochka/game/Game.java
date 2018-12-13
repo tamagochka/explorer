@@ -1,17 +1,21 @@
 package my.tamagochka.game;
 
 import my.tamagochka.display.Display;
+import my.tamagochka.game.entities.*;
 import my.tamagochka.graphics.textureAtlas.AtlasManager;
 import my.tamagochka.utilities.ResourceLoader;
 
+import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
 public class Game implements Runnable {
 
     private int WIDTH = 800;
     private int HEIGHT = 600;
+    private float SCALE_SIZE = 5f;
     private int CLEAR_COLOR = 0xFF000000;
     private int COUNT_BUFFERS = 3;
 
@@ -26,6 +30,10 @@ public class Game implements Runnable {
     private Thread gameThread;
     private boolean running = false;
 
+    private ArrayList<Entity> entities;
+
+    private Graphics2D graphics;
+
     public Game() {
         Display.create(WIDTH, HEIGHT, TITLE, CLEAR_COLOR, COUNT_BUFFERS);
         Display.addWindowClosingListener(new WindowAdapter() {
@@ -35,19 +43,18 @@ public class Game implements Runnable {
                 super.windowClosing(e);
             }
         });
+        graphics = Display.getGraphics();
+
+        entities = new ArrayList<>();
 
         ResourceLoader loader = new ResourceLoader("resources/");
 
         AtlasManager atlasManager = new AtlasManager();
         atlasManager.addAtlas(loader, loader, ATLAS_FILENAME);
+        EntityFactory factory = new EntityFactory(atlasManager, SCALE_SIZE);
+        Player player = (Player) factory.build(EntityType.PLAYER, 100, 100, DirectionMoving.SOUTH, 0);
 
-
-//        TextureAtlas atlas = new TextureAtlas(loader, ATLAS_FILENAME);
-//        EntityFactory factory = new EntityFactory(EntityType.PLAYER, atlas, ); // TODO creating factory
-//        Player player = // TODO call factory
-
-
-
+        entities.add(player);
 
 
 
@@ -82,6 +89,10 @@ public class Game implements Runnable {
 
     private void render() {
         Display.clear();
+
+        for(int i = 0; i < entities.size(); i++) {
+            entities.get(i).render(graphics);
+        }
 
 
         Display.swapBuffers();

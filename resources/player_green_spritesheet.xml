@@ -4,22 +4,22 @@
         <entity name="PLAYER">
             <spriteSheets>
                 <spriteSheet name="NORTH">
-                    <l>0</l><t>194</t><w>647</w><h>97</h>
+                    <l>0</l><t>194</t><w>648</w><h>97</h>
                     <sw>72</sw><sh>97</sh><sc>9</sc>
                     <m>false</m>
                 </spriteSheet>
                 <spriteSheet name="EAST">
-                    <l>0</l><t>0</t><w>647</w><h>97</h>
+                    <l>0</l><t>0</t><w>648</w><h>97</h>
                     <sw>72</sw><sh>97</sh><sc>9</sc>
                     <m>false</m>
                 </spriteSheet>
                 <spriteSheet name="SOUTH">
-                    <l>0</l><t>97</t><w>647</w><h>97</h>
+                    <l>0</l><t>97</t><w>648</w><h>97</h>
                     <sw>72</sw><sh>97</sh><sc>9</sc>
                     <m>false</m>
                 </spriteSheet>
                 <spriteSheet name="WEST">
-                    <l>0</l><t>0</t><w>647</w><h>97</h>
+                    <l>0</l><t>0</t><w>648</w><h>97</h>
                     <sw>72</sw><sh>97</sh><sc>9</sc>
                     <m>true</m>
                 </spriteSheet>

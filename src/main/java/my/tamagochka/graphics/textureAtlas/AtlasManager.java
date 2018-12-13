@@ -31,8 +31,8 @@ public class AtlasManager {
                                 data.get(i).first.getEntityByName(entityName).getSpriteSheetByName(spriteSheetName).getHeight()
                         ),
                         data.get(i).first.getEntityByName(entityName).getSpriteSheetByName(spriteSheetName).getSpritesCount(),
-                        data.get(i).first.getEntityByName(entityName).getSpriteSheetByName(spriteSheetName).getWidth(),
-                        data.get(i).first.getEntityByName(entityName).getSpriteSheetByName(spriteSheetName).getHeight()
+                        data.get(i).first.getEntityByName(entityName).getSpriteSheetByName(spriteSheetName).getSpriteWidth(),
+                        data.get(i).first.getEntityByName(entityName).getSpriteSheetByName(spriteSheetName).getSpriteHeight()
                 );
                 return spriteSheet;
             }

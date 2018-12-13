@@ -1,13 +1,17 @@
 package my.tamagochka.game.entities;
 
+import my.tamagochka.graphics.sprites.Sprite;
 import my.tamagochka.graphics.sprites.SpriteSheet;
 
+import java.awt.*;
 import java.util.Map;
 
-public class Player extends MovingEntity {
+public class Player extends Entity {
 
-    public Player(EntityType type, float x, float y, DirectionMoving dirrection, float speed, Map<DirectionMoving, SpriteSheet> spriteMap) {
-        super(type, x, y, dirrection, speed, spriteMap);
+    private static final EntityType type = EntityType.PLAYER;
+
+    public Player(float x, float y, DirectionMoving direction, float speed, Map<DirectionMoving, Sprite> spriteMap) {
+        super(type, x, y, speed, direction, spriteMap);
     }
 
     @Override

@@ -19,10 +19,14 @@ public class SpriteSheet {
     }
 
     public BufferedImage getSprite(int index) {
-        index = index & spriteCount; // 0 <= index < spriteCount
+        index = index % (spriteCount); // 0 <= index < spriteCount
         int x = index % spritesInLine * width;
         int y = index / spritesInLine * height;
         return sheet.getSubimage(x, y, width, height);
+    }
+
+    public int getSpriteCount() {
+        return spriteCount;
     }
 
 }

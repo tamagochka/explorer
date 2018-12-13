@@ -5,6 +5,7 @@ public enum DirectionMoving {
     NORTH,
     EAST,
     SOUTH,
-    WEST;
+    WEST,
+    NOPE;
 
 }
