@@ -21,8 +21,37 @@
                 </spriteSheet>
             </spriteSheets>
         </entity>
-
-
-
+        <entity name="TILE">
+            <spriteSheets>
+                <spriteSheet name="WALL">
+                    <l>0</l><t>388</t><w>97</w><h>97</h>
+                    <sw>97</sw><sh>97</sh><sc>1</sc>
+                </spriteSheet>
+                <spriteSheet name="EMPTY">
+                    <l>97</l><t>388</t><w>97</w><h>97</h>
+                    <sw>97</sw><sh>97</sh><sc>1</sc>
+                </spriteSheet>
+                <spriteSheet name="EMPTY_SHADOW_DOWN">
+                    <l>194</l><t>388</t><w>97</w><h>97</h>
+                    <sw>97</sw><sh>97</sh><sc>1</sc>
+                </spriteSheet>
+                <spriteSheet name="EMPTY_SHADOW_RIGHT">
+                    <l>291</l><t>388</t><w>97</w><h>97</h>
+                    <sw>97</sw><sh>97</sh><sc>1</sc>
+                </spriteSheet>
+                <spriteSheet name="EMPTY_SHADOW_DOWN_RIGHT">
+                    <l>388</l><t>388</t><w>97</w><h>97</h>
+                    <sw>97</sw><sh>97</sh><sc>1</sc>
+                </spriteSheet>
+                <spriteSheet name="EMPTY_CLOSED_DOOR">
+                    <l>0</l><t>485</t><w>97</w><h>97</h>
+                    <sw>97</sw><sh>97</sh><sc>1</sc>
+                </spriteSheet>
+                <spriteSheet name="EMPTY_OPENED_DOOR">
+                    <l>97</l><t>485</t><w>97</w><h>97</h>
+                    <sw>97</sw><sh>97</sh><sc>1</sc>
+                </spriteSheet>
+            </spriteSheets>
+        </entity>
     </entities>
 </textureAtlas>

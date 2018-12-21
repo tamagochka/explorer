@@ -29,4 +29,12 @@ public class SpriteSheet {
         return spriteCount;
     }
 
+    public int getWidth() {
+        return width;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
 }

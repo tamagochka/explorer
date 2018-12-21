@@ -16,7 +16,8 @@ public class EntityFactory {
         this.scaleSize = scaleSize;
     }
 
-    public Entity build(EntityType type, float x, float y, DirectionMoving direction, float speed, float animationSpeed) {
+    public Entity build(EntityType type, float x, float y, DirectionMoving direction, float speed, float animationSpeed,
+                        int cameraHorizontalOffset, int cameraVerticalOffset) {
         Entity entity = null;
         switch(type) {
             case PLAYER:
@@ -25,17 +26,13 @@ public class EntityFactory {
                 spriteMap.put(DirectionMoving.EAST, new Sprite(atlasManager.getSpriteSheet("PLAYER", "EAST"), scaleSize));
                 spriteMap.put(DirectionMoving.SOUTH, new Sprite(atlasManager.getSpriteSheet("PLAYER", "SOUTH"), scaleSize));
                 spriteMap.put(DirectionMoving.WEST, new Sprite(atlasManager.getSpriteSheet("PLAYER", "WEST"), scaleSize));
-                entity = new Player(x, y, direction, speed, animationSpeed, spriteMap);
+                entity = new Player(x, y, direction, speed, animationSpeed, spriteMap,
+                        cameraHorizontalOffset, cameraVerticalOffset);
                 break;
 
         }
 
         return entity;
     }
-
-    public Entity build(EntityType type, float x, float y) {
-        return build(type, x, y, DirectionMoving.NOPE, 0, 0);
-    }
-
 
 }

@@ -1,11 +1,14 @@
 package my.tamagochka.game.entities;
 
+import my.tamagochka.game.camera.Camera;
+import my.tamagochka.game.camera.ObservableObject;
+import my.tamagochka.game.camera.Renderable;
 import my.tamagochka.graphics.sprites.Sprite;
 
 import java.awt.*;
 import java.util.Map;
 
-public abstract class Entity {
+public abstract class Entity implements Renderable, ObservableObject {
 
     private static int countEntities = 0;
 
@@ -22,13 +25,15 @@ public abstract class Entity {
     private float animationSpeed;
     private DirectionMoving direction;
     private Map<DirectionMoving, Sprite> spriteMap;
-
+    private int cameraHorizontalOffset;
+    private int cameraVerticalOffset;
 
     private int distance = 0;
     private int currentFrame = 0;
 
     protected Entity(EntityType type, float x, float y, float speed,
-                     DirectionMoving direction, float animationSpeed, Map<DirectionMoving, Sprite> spriteMap) {
+                     DirectionMoving direction, float animationSpeed, Map<DirectionMoving, Sprite> spriteMap,
+                     int cameraHorizontalOffset, int cameraVerticalOffset) {
         this.type = type;
         this.x = x;
         this.y = y;
@@ -37,26 +42,18 @@ public abstract class Entity {
         this.direction = direction;
         this.spriteMap = spriteMap;
         this.index = nextIndex();
+        this.cameraHorizontalOffset = cameraHorizontalOffset;
+        this.cameraVerticalOffset = cameraVerticalOffset;
     }
 
     public int getIndex() {
         return index;
     }
 
-    public void render(Graphics2D g) {
-        spriteMap.get(direction).render(g, x, y, currentFrame);
+    @Override
+    public void render(Graphics2D g, Camera camera) {
+        spriteMap.get(direction).render(g, x - camera.getCameraPosX(), y - camera.getCameraPosY(), currentFrame);
     }
-
-    public void nextFrame() {
-        if(currentFrame >= spriteMap.get(direction).getCountFrames() - 1)
-            currentFrame = 0;
-        currentFrame++;
-    }
-
-    public void resetFrame() {
-        currentFrame = 0;
-    }
-
 
     public void update(Action action) {
         float newX = x;
@@ -65,26 +62,27 @@ public abstract class Entity {
         switch(action.getAction()) {
             case MOVE_UP:
                 direction = DirectionMoving.NORTH;
-                newY -= speed;
+                newY += speed * direction.getVy();
                 break;
             case MOVE_DOWN:
                 direction = DirectionMoving.SOUTH;
-                newY += speed;
+                newY += speed * direction.getVy();
                 break;
             case MOVE_LEFT:
                 direction = DirectionMoving.WEST;
-                newX -= speed;
+                newX += speed * direction.getVx();
                 break;
             case MOVE_RIGHT:
                 direction = DirectionMoving.EAST;
-                newX += speed;
+                newX += speed * direction.getVx();
                 break;
         }
 
-        if(( x != newX) || ( y != newY)) {
+        if((x != newX) || (y != newY)) {
 
             distance += speed;
             currentFrame = (int)(distance / animationSpeed) % spriteMap.get(direction).getCountFrames();
+            // TODO will need upgrade changing frames
             // TODO collisions detection
 
 
@@ -97,6 +95,16 @@ public abstract class Entity {
         x = newX;
         y = newY;
 
+    }
+
+    @Override
+    public int getObservePositionX() {
+        return (int)x + spriteMap.get(direction).getScaledWidth() / 2 + (cameraHorizontalOffset * direction.getVx());
+    }
+
+    @Override
+    public int getObservePositionY() {
+        return (int)y + spriteMap.get(direction).getScaledHeight() / 2 + (cameraVerticalOffset * direction.getVy());
     }
 
 }

@@ -8,7 +8,7 @@ public enum EntityType {
 
     private int number;
 
-    private EntityType(int number) {
+    EntityType(int number) {
         this.number = number;
     }
 

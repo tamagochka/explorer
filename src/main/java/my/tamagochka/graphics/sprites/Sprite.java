@@ -10,16 +10,24 @@ public class Sprite {
     private float scale;
     private ArrayList<BufferedImage> images;
 
+    private int width;
+    private int height;
+    private int scaledWidth;
+    private int scaledHeight;
+
     public Sprite(SpriteSheet sheet, float scale) {
         this.sheet = sheet;
         this.scale = scale;
         images = new ArrayList<>();
+
+        width = sheet.getWidth();
+        height = sheet.getHeight();
+        scaledWidth = (int)(width * scale);
+        scaledHeight = (int)(height * scale);
+
         for(int i = 0; i < sheet.getSpriteCount(); i++) {
-            BufferedImage image = sheet.getSprite(i);
-            int newWidth = (int) (image.getWidth() * scale);
-            int newHeight = (int) (image.getHeight() * scale);
-            BufferedImage newImage = new BufferedImage(newWidth, newHeight, BufferedImage.TYPE_INT_ARGB);
-            newImage.getGraphics().drawImage(image, 0, 0, newWidth, newHeight, null);
+            BufferedImage newImage = new BufferedImage(scaledWidth, scaledHeight, BufferedImage.TYPE_INT_ARGB);
+            newImage.getGraphics().drawImage(sheet.getSprite(i), 0, 0, scaledWidth, scaledHeight, null);
             images.add(newImage);
         }
     }
@@ -30,6 +38,14 @@ public class Sprite {
 
     public int getCountFrames() {
         return images.size();
+    }
+
+    public int getScaledWidth() {
+        return scaledWidth;
+    }
+
+    public int getScaledHeight() {
+        return scaledHeight;
     }
 
 }

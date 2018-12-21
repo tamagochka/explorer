@@ -2,7 +2,11 @@ package my.tamagochka.game;
 
 import my.tamagochka.IO.PerformAction;
 import my.tamagochka.display.Display;
+import my.tamagochka.game.camera.Camera;
+import my.tamagochka.game.camera.Dummy;
 import my.tamagochka.game.entities.*;
+import my.tamagochka.game.level.Level;
+import my.tamagochka.game.level.LevelFactory;
 import my.tamagochka.graphics.textureAtlas.AtlasManager;
 import my.tamagochka.utilities.ResourceLoader;
 
@@ -16,7 +20,7 @@ public class Game implements Runnable {
 
     private int WIDTH = 800;
     private int HEIGHT = 600;
-    private float SCALE_SIZE = 1f;
+    private float SCALE_SIZE = 0.5f;
     private int CLEAR_COLOR = 0xFF000000;
     private int COUNT_BUFFERS = 3;
 
@@ -32,9 +36,10 @@ public class Game implements Runnable {
     private boolean running = false;
 
     private ArrayList<Entity> entities;
+    private Level level;
+    private Camera camera;
 
     private Graphics2D graphics;
-
     private PerformAction input;
 
     public Game() {
@@ -46,29 +51,25 @@ public class Game implements Runnable {
                 super.windowClosing(e);
             }
         });
+        input = new PerformAction();
+        Display.addListener(input);
 
         graphics = Display.getGraphics();
-
-        entities = new ArrayList<>();
 
         ResourceLoader loader = new ResourceLoader("resources/");
         AtlasManager atlasManager = new AtlasManager();
         atlasManager.addAtlas(loader, loader, ATLAS_FILENAME);
 
-        EntityFactory factory = new EntityFactory(atlasManager, SCALE_SIZE);
-        Player player = (Player) factory.build(EntityType.PLAYER, 100, 100, DirectionMoving.SOUTH, 3, 5);
+        LevelFactory levelFactory = new LevelFactory(atlasManager, SCALE_SIZE);
+        level = levelFactory.generate(11, 11, 1, 1, 9, 9);
 
+        entities = new ArrayList<>();
+        EntityFactory factory = new EntityFactory(atlasManager, SCALE_SIZE);
+
+        Player player = (Player)factory.build(EntityType.PLAYER, 100, 300, DirectionMoving.SOUTH, 3, 5, 150, 150);
         entities.add(player);
 
-        input = new PerformAction();
-        Display.addListener(input);
-
-
-
-
-
-
-
+        camera = new Camera(graphics, 20, 0.1, 0, 0, 0, 0, WIDTH, HEIGHT, player);
 
 
     }
@@ -100,18 +101,23 @@ public class Game implements Runnable {
     private void render() {
         Display.clear();
 
+        camera.render(level);
+
         for(int i = 0; i < entities.size(); i++) {
-            entities.get(i).render(graphics);
+            camera.render(entities.get(i));
         }
 
 
         Display.swapBuffers();
     }
 
-    private void update() { // update state game objects
+    private void update() { // update state game gameObjects
+
         for(int i = 0; i < entities.size(); i++) {
             entities.get(i).update(input);
         }
+
+        camera.update();
 
     }
 
