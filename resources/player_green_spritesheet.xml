@@ -4,53 +4,131 @@
         <entity name="PLAYER">
             <spriteSheets>
                 <spriteSheet name="NORTH">
-                    <l>0</l><t>194</t><w>648</w><h>97</h>
-                    <sw>72</sw><sh>97</sh><sc>9</sc>
+                    <l>0</l><t>194</t><w>648</w><h>95</h>
+                    <sw>72</sw><sh>95</sh><sc>9</sc>
                 </spriteSheet>
                 <spriteSheet name="EAST">
-                    <l>0</l><t>0</t><w>648</w><h>97</h>
-                    <sw>72</sw><sh>97</sh><sc>9</sc>
+                    <l>0</l><t>0</t><w>648</w><h>95</h>
+                    <sw>72</sw><sh>95</sh><sc>9</sc>
                 </spriteSheet>
                 <spriteSheet name="SOUTH">
-                    <l>0</l><t>97</t><w>648</w><h>97</h>
-                    <sw>72</sw><sh>97</sh><sc>9</sc>
+                    <l>0</l><t>97</t><w>648</w><h>95</h>
+                    <sw>72</sw><sh>95</sh><sc>9</sc>
                 </spriteSheet>
                 <spriteSheet name="WEST">
-                    <l>0</l><t>291</t><w>648</w><h>97</h>
-                    <sw>72</sw><sh>97</sh><sc>9</sc>
+                    <l>0</l><t>291</t><w>648</w><h>95</h>
+                    <sw>72</sw><sh>95</sh><sc>9</sc>
                 </spriteSheet>
             </spriteSheets>
         </entity>
         <entity name="TILE">
             <spriteSheets>
+                <spriteSheet name="VERTICAL_UP_TERMINATED_WALL">
+                    <l>0</l><t>388</t><w>120</w><h>120</h>
+                    <sw>120</sw><sh>120</sh><sc>1</sc>
+                </spriteSheet>
+                <spriteSheet name="VERTICAL_MIDDLE_WALL">
+                    <l>0</l><t>508</t><w>120</w><h>120</h>
+                    <sw>120</sw><sh>120</sh><sc>1</sc>
+                </spriteSheet>
+                <spriteSheet name="VERTICAL_DOWN_TERMINATED_WALL">
+                    <l>0</l><t>628</t><w>120</w><h>120</h>
+                    <sw>120</sw><sh>120</sh><sc>1</sc>
+                </spriteSheet>
+                <spriteSheet name="HORIZONTAL_LEFT_TERMINATED_WALL">
+                    <l>120</l><t>388</t><w>120</w><h>120</h>
+                    <sw>120</sw><sh>120</sh><sc>1</sc>
+                </spriteSheet>
+                <spriteSheet name="HORIZONTAL_MIDDLE_WALL">
+                    <l>240</l><t>388</t><w>120</w><h>120</h>
+                    <sw>120</sw><sh>120</sh><sc>1</sc>
+                </spriteSheet>
+                <spriteSheet name="HORIZONTAL_RIGHT_TERMINATED_WALL">
+                    <l>360</l><t>388</t><w>120</w><h>120</h>
+                    <sw>120</sw><sh>120</sh><sc>1</sc>
+                </spriteSheet>
+                <spriteSheet name="LEFT_TOP_CORNER_WALL">
+                    <l>120</l><t>508</t><w>120</w><h>120</h>
+                    <sw>120</sw><sh>120</sh><sc>1</sc>
+                </spriteSheet>
+                <spriteSheet name="RIGHT_TOP_CORNER_WALL">
+                    <l>360</l><t>508</t><w>120</w><h>120</h>
+                    <sw>120</sw><sh>120</sh><sc>1</sc>
+                </spriteSheet>
+                <spriteSheet name="LEFT_BOTTOM_CORNER_WALL">
+                    <l>120</l><t>748</t><w>120</w><h>120</h>
+                    <sw>120</sw><sh>120</sh><sc>1</sc>
+                </spriteSheet>
+                <spriteSheet name="RIGHT_BOTTOM_CORNER_WALL">
+                    <l>360</l><t>748</t><w>120</w><h>120</h>
+                    <sw>120</sw><sh>120</sh><sc>1</sc>
+                </spriteSheet>
+                <spriteSheet name="CROSS_WALLS">
+                    <l>240</l><t>628</t><w>120</w><h>120</h>
+                    <sw>120</sw><sh>120</sh><sc>1</sc>
+                </spriteSheet>
+                <spriteSheet name="VERTICAL_LEFT_WALL">
+                    <l>360</l><t>628</t><w>120</w><h>120</h>
+                    <sw>120</sw><sh>120</sh><sc>1</sc>
+                </spriteSheet>
+                <spriteSheet name="VERTICAL_RIGHT_WALL">
+                    <l>120</l><t>628</t><w>120</w><h>120</h>
+                    <sw>120</sw><sh>120</sh><sc>1</sc>
+                </spriteSheet>
+                <spriteSheet name="HORIZONTAL_DOWN_WALL">
+                    <l>240</l><t>508</t><w>120</w><h>120</h>
+                    <sw>120</sw><sh>120</sh><sc>1</sc>
+                </spriteSheet>
+                <spriteSheet name="HORIZONTAL_UP_WALL">
+                    <l>240</l><t>748</t><w>120</w><h>120</h>
+                    <sw>120</sw><sh>120</sh><sc>1</sc>
+                </spriteSheet>
+                <spriteSheet name="GRASS">
+                    <l>0</l><t>748</t><w>120</w><h>120</h>
+                    <sw>120</sw><sh>120</sh><sc>1</sc>
+                </spriteSheet>
+                <spriteSheet name="CLOSED_DOOR">
+                    <l>480</l><t>388</t><w>120</w><h>120</h>
+                    <sw>120</sw><sh>120</sh><sc>1</sc>
+                </spriteSheet>
+                <spriteSheet name="OPENED_DOOR">
+                    <l>600</l><t>388</t><w>120</w><h>120</h>
+                    <sw>120</sw><sh>120</sh><sc>1</sc>
+                </spriteSheet>
+
+                <!--
                 <spriteSheet name="WALL">
-                    <l>0</l><t>388</t><w>97</w><h>97</h>
-                    <sw>97</sw><sh>97</sh><sc>1</sc>
+                    <l>0</l><t>388</t><w>120</w><h>120</h>
+                    <sw>120</sw><sh>120</sh><sc>1</sc>
                 </spriteSheet>
                 <spriteSheet name="EMPTY">
-                    <l>97</l><t>388</t><w>97</w><h>97</h>
-                    <sw>97</sw><sh>97</sh><sc>1</sc>
+                    <l>150</l><t>388</t><w>120</w><h>120</h>
+                    <sw>120</sw><sh>120</sh><sc>1</sc>
                 </spriteSheet>
                 <spriteSheet name="EMPTY_SHADOW_DOWN">
-                    <l>194</l><t>388</t><w>97</w><h>97</h>
-                    <sw>97</sw><sh>97</sh><sc>1</sc>
+                    <l>300</l><t>388</t><w>120</w><h>120</h>
+                    <sw>120</sw><sh>120</sh><sc>1</sc>
                 </spriteSheet>
                 <spriteSheet name="EMPTY_SHADOW_RIGHT">
-                    <l>291</l><t>388</t><w>97</w><h>97</h>
-                    <sw>97</sw><sh>97</sh><sc>1</sc>
+                    <l>450</l><t>388</t><w>120</w><h>120</h>
+                    <sw>120</sw><sh>120</sh><sc>1</sc>
                 </spriteSheet>
                 <spriteSheet name="EMPTY_SHADOW_DOWN_RIGHT">
-                    <l>388</l><t>388</t><w>97</w><h>97</h>
-                    <sw>97</sw><sh>97</sh><sc>1</sc>
+                    <l>600</l><t>388</t><w>120</w><h>120</h>
+                    <sw>120</sw><sh>120</sh><sc>1</sc>
                 </spriteSheet>
                 <spriteSheet name="EMPTY_CLOSED_DOOR">
-                    <l>0</l><t>485</t><w>97</w><h>97</h>
-                    <sw>97</sw><sh>97</sh><sc>1</sc>
+                    <l>0</l><t>538</t><w>120</w><h>120</h>
+                    <sw>120</sw><sh>120</sh><sc>1</sc>
                 </spriteSheet>
                 <spriteSheet name="EMPTY_OPENED_DOOR">
-                    <l>97</l><t>485</t><w>97</w><h>97</h>
-                    <sw>97</sw><sh>97</sh><sc>1</sc>
+                    <l>150</l><t>538</t><w>120</w><h>120</h>
+                    <sw>120</sw><sh>120</sh><sc>1</sc>
                 </spriteSheet>
+
+                -->
+
+
             </spriteSheets>
         </entity>
     </entities>

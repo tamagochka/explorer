@@ -3,9 +3,12 @@ package my.tamagochka.game.entities;
 import my.tamagochka.game.camera.Camera;
 import my.tamagochka.game.camera.ObservableObject;
 import my.tamagochka.game.camera.Renderable;
+import my.tamagochka.game.engine.Collisional;
 import my.tamagochka.graphics.sprites.Sprite;
 
 import java.awt.*;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 
 public abstract class Entity implements Renderable, ObservableObject {
@@ -31,6 +34,8 @@ public abstract class Entity implements Renderable, ObservableObject {
     private int distance = 0;
     private int currentFrame = 0;
 
+    private List<Collisional> barriers;
+
     protected Entity(EntityType type, float x, float y, float speed,
                      DirectionMoving direction, float animationSpeed, Map<DirectionMoving, Sprite> spriteMap,
                      int cameraHorizontalOffset, int cameraVerticalOffset) {
@@ -44,6 +49,7 @@ public abstract class Entity implements Renderable, ObservableObject {
         this.index = nextIndex();
         this.cameraHorizontalOffset = cameraHorizontalOffset;
         this.cameraVerticalOffset = cameraVerticalOffset;
+        barriers = new LinkedList<>();
     }
 
     public int getIndex() {
@@ -53,6 +59,10 @@ public abstract class Entity implements Renderable, ObservableObject {
     @Override
     public void render(Graphics2D g, Camera camera) {
         spriteMap.get(direction).render(g, x - camera.getCameraPosX(), y - camera.getCameraPosY(), currentFrame);
+    }
+
+    public void addBarrier(Collisional barrier) {
+        barriers.add(barrier);
     }
 
     public void update(Action action) {
@@ -85,11 +95,22 @@ public abstract class Entity implements Renderable, ObservableObject {
             // TODO will need upgrade changing frames
             // TODO collisions detection
 
+            boolean collision = false;
+            for(Collisional barrier : barriers) {
+                if(barrier.checkCollision((int)newX, (int)newY) ||
+                        barrier.checkCollision((int)newX, (int)newY + spriteMap.get(direction).getScaledHeight()) ||
+                        barrier.checkCollision((int)newX + spriteMap.get(direction).getScaledWidth(), (int)newY) ||
+                        barrier.checkCollision((int)newX + spriteMap.get(direction).getScaledWidth(),
+                                (int)newY + spriteMap.get(direction).getScaledHeight())) {
+                    distance = 0;
+                    currentFrame = 0;
+                    return;
+                }
+            }
 
         } else {
             distance = 0;
             currentFrame = 0;
-
         }
 
         x = newX;

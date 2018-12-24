@@ -61,12 +61,13 @@ public class Game implements Runnable {
         atlasManager.addAtlas(loader, loader, ATLAS_FILENAME);
 
         LevelFactory levelFactory = new LevelFactory(atlasManager, SCALE_SIZE);
-        level = levelFactory.generate(11, 11, 1, 1, 9, 9);
+        level = levelFactory.generate(81, 81, 1, 1, 79, 79);
 
         entities = new ArrayList<>();
         EntityFactory factory = new EntityFactory(atlasManager, SCALE_SIZE);
 
-        Player player = (Player)factory.build(EntityType.PLAYER, 100, 300, DirectionMoving.SOUTH, 3, 5, 150, 150);
+        Player player = (Player)factory.build(EntityType.PLAYER, level.getStartPositionX(), level.getStartPositionY(), DirectionMoving.SOUTH, 3, 5, 150, 150);
+        player.addBarrier(level); // player collision with level objects
         entities.add(player);
 
         camera = new Camera(graphics, 20, 0.1, 0, 0, 0, 0, WIDTH, HEIGHT, player);
