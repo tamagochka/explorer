@@ -2,6 +2,7 @@ package my.tamagochka.game;
 
 import my.tamagochka.IO.PerformAction;
 import my.tamagochka.display.Display;
+import my.tamagochka.game.UI.UI;
 import my.tamagochka.game.camera.Camera;
 import my.tamagochka.game.camera.Dummy;
 import my.tamagochka.game.entities.*;
@@ -20,7 +21,7 @@ public class Game implements Runnable {
 
     private int WIDTH = 800;
     private int HEIGHT = 600;
-    private float SCALE_SIZE = 0.5f;
+    private float SCALE_SIZE = 0.7f;
     private int CLEAR_COLOR = 0xFF000000;
     private int COUNT_BUFFERS = 3;
 
@@ -37,6 +38,7 @@ public class Game implements Runnable {
 
     private ArrayList<Entity> entities;
     private Level level;
+    private UI ui;
     private Camera camera;
 
     private Graphics2D graphics;
@@ -61,7 +63,7 @@ public class Game implements Runnable {
         atlasManager.addAtlas(loader, loader, ATLAS_FILENAME);
 
         LevelFactory levelFactory = new LevelFactory(atlasManager, SCALE_SIZE);
-        level = levelFactory.generate(81, 81, 1, 1, 79, 79);
+        level = levelFactory.generate(11, 11, 1, 1, 9, 9);
 
         entities = new ArrayList<>();
         EntityFactory factory = new EntityFactory(atlasManager, SCALE_SIZE);
@@ -69,6 +71,8 @@ public class Game implements Runnable {
         Player player = (Player)factory.build(EntityType.PLAYER, level.getStartPositionX(), level.getStartPositionY(), DirectionMoving.SOUTH, 3, 5, 150, 150);
         player.addBarrier(level); // player collision with level objects
         entities.add(player);
+
+        ui = new UI(atlasManager, SCALE_SIZE);
 
         camera = new Camera(graphics, 20, 0.1, 0, 0, 0, 0, WIDTH, HEIGHT, player);
 
@@ -107,6 +111,8 @@ public class Game implements Runnable {
         for(int i = 0; i < entities.size(); i++) {
             camera.render(entities.get(i));
         }
+
+        camera.render(ui);
 
 
         Display.swapBuffers();

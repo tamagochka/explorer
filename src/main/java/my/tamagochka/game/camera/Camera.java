@@ -93,4 +93,12 @@ public class Camera {
         return (int)Math.round(cameraPosY);
     }
 
+    public int getFrameWidth() {
+        return frameWidth;
+    }
+
+    public int getFrameHeight() {
+        return frameHeight;
+    }
+
 }

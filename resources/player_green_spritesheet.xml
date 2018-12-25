@@ -95,40 +95,18 @@
                     <l>600</l><t>388</t><w>120</w><h>120</h>
                     <sw>120</sw><sh>120</sh><sc>1</sc>
                 </spriteSheet>
-
-                <!--
-                <spriteSheet name="WALL">
-                    <l>0</l><t>388</t><w>120</w><h>120</h>
+            </spriteSheets>
+        </entity>
+        <entity name="UI">
+            <spriteSheets>
+                <spriteSheet name="DARKNESS">
+                    <l>480</l><t>508</t><w>120</w><h>120</h>
                     <sw>120</sw><sh>120</sh><sc>1</sc>
                 </spriteSheet>
-                <spriteSheet name="EMPTY">
-                    <l>150</l><t>388</t><w>120</w><h>120</h>
+                <spriteSheet name="LIGHT_RADIUS">
+                    <l>600</l><t>508</t><w>120</w><h>120</h>
                     <sw>120</sw><sh>120</sh><sc>1</sc>
                 </spriteSheet>
-                <spriteSheet name="EMPTY_SHADOW_DOWN">
-                    <l>300</l><t>388</t><w>120</w><h>120</h>
-                    <sw>120</sw><sh>120</sh><sc>1</sc>
-                </spriteSheet>
-                <spriteSheet name="EMPTY_SHADOW_RIGHT">
-                    <l>450</l><t>388</t><w>120</w><h>120</h>
-                    <sw>120</sw><sh>120</sh><sc>1</sc>
-                </spriteSheet>
-                <spriteSheet name="EMPTY_SHADOW_DOWN_RIGHT">
-                    <l>600</l><t>388</t><w>120</w><h>120</h>
-                    <sw>120</sw><sh>120</sh><sc>1</sc>
-                </spriteSheet>
-                <spriteSheet name="EMPTY_CLOSED_DOOR">
-                    <l>0</l><t>538</t><w>120</w><h>120</h>
-                    <sw>120</sw><sh>120</sh><sc>1</sc>
-                </spriteSheet>
-                <spriteSheet name="EMPTY_OPENED_DOOR">
-                    <l>150</l><t>538</t><w>120</w><h>120</h>
-                    <sw>120</sw><sh>120</sh><sc>1</sc>
-                </spriteSheet>
-
-                -->
-
-
             </spriteSheets>
         </entity>
     </entities>

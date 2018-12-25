@@ -19,12 +19,16 @@ public class Sprite {
         this.sheet = sheet;
         this.scale = scale;
         images = new ArrayList<>();
-
         width = sheet.getWidth();
         height = sheet.getHeight();
+        resize(scale);
+    }
+
+    public void resize(float newScale) {
+        scale = newScale;
+        images.clear();
         scaledWidth = (int)(width * scale);
         scaledHeight = (int)(height * scale);
-
         for(int i = 0; i < sheet.getSpriteCount(); i++) {
             BufferedImage newImage = new BufferedImage(scaledWidth, scaledHeight, BufferedImage.TYPE_INT_ARGB);
             newImage.getGraphics().drawImage(sheet.getSprite(i), 0, 0, scaledWidth, scaledHeight, null);
