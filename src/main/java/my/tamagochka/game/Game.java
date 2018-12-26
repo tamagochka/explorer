@@ -40,6 +40,7 @@ public class Game implements Runnable {
     private Level level;
     private UI ui;
     private Camera camera;
+    private Player player;
 
     private Graphics2D graphics;
     private PerformAction input;
@@ -68,13 +69,14 @@ public class Game implements Runnable {
         entities = new ArrayList<>();
         EntityFactory factory = new EntityFactory(atlasManager, SCALE_SIZE);
 
-        Player player = (Player)factory.build(EntityType.PLAYER, level.getStartPositionX(), level.getStartPositionY(), DirectionMoving.SOUTH, 3, 5, 150, 150);
+        player = (Player)factory.build(EntityType.PLAYER, level.getStartPositionX(), level.getStartPositionY(), DirectionMoving.SOUTH, 3, 5, 150, 150);
         player.addBarrier(level); // player collision with level objects
         entities.add(player);
 
+        Dummy dummy = new Dummy(level.getFinishPositionX(), level.getFinishPositionY());
+        camera = new Camera(graphics, 20, 0.1, WIDTH, HEIGHT, dummy);
         ui = new UI(atlasManager, SCALE_SIZE);
 
-        camera = new Camera(graphics, 20, 0.1, 0, 0, 0, 0, WIDTH, HEIGHT, player);
 
 
     }
@@ -84,6 +86,14 @@ public class Game implements Runnable {
         running = true;
         gameThread = new Thread(this);
         gameThread.start();
+
+        // start level
+        camera.setObservableObject(player);
+        while(camera.isCameraMoving()) {}
+
+        // start game
+        ui.startGameTimer();
+
 
     }
 
@@ -100,6 +110,7 @@ public class Game implements Runnable {
 
     private void clean() {
         // free all resources
+        ui.stopGameTimer();
         Display.destroy();
     }
 

@@ -12,24 +12,21 @@ public class Camera {
     private double curSpeed;
     private double maxSpeed;
     private double acceleration;
-    private int frameTop, frameLeft, frameWidth, frameHeight;
+    private int frameWidth, frameHeight;
 
     public Camera(Graphics2D g, double maxSpeed, double acceleration, // if maxSpeed == 0 then camera moving instantly.
-                  int startPosX, int startPosY,
-                  int frameTop, int frameLeft, int frameWidth, int frameHeight,
-                  ObservableObject object) {
+                  int frameWidth, int frameHeight, ObservableObject object) {
         graphics = g;
-
-        this.frameTop = frameTop;
-        this.frameLeft = frameLeft;
         this.frameWidth = frameWidth;
         this.frameHeight = frameHeight;
-
-        this.cameraPosX = startPosX;
-        this.cameraPosY = startPosY;
+        this.cameraPosX = object.getObservePositionX() - frameWidth / 2;
+        this.cameraPosY = object.getObservePositionY() - frameHeight / 2;
         this.maxSpeed = maxSpeed;
         this.acceleration = acceleration;
+        this.object = object;
+    }
 
+    public void setObservableObject(ObservableObject object) {
         this.object = object;
     }
 
@@ -79,6 +76,12 @@ public class Camera {
                 cameraPosY = cameraPosY + dy * curSpeed;
             }
         }
+    }
+
+    public boolean isCameraMoving() {
+        return curSpeed > 0 ||
+                cameraPosX != object.getObservePositionX() - frameWidth / 2 ||
+                cameraPosY != object.getObservePositionY() - frameHeight / 2;
     }
 
     public void render(Renderable renderableObject) {

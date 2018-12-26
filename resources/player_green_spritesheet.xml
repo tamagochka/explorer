@@ -107,6 +107,10 @@
                     <l>600</l><t>508</t><w>120</w><h>120</h>
                     <sw>120</sw><sh>120</sh><sc>1</sc>
                 </spriteSheet>
+                <spriteSheet name="DIGITS">
+                    <l>0</l><t>868</t><w>384</w><h>38</h>
+                    <sw>32</sw><sh>38</sh><sc>12</sc>
+                </spriteSheet>
             </spriteSheets>
         </entity>
     </entities>

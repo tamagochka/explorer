@@ -17,6 +17,7 @@ public class Level implements Renderable, Collisional {
     private int[][] tileMap;
     private Map<TileType, Tile> tiles;
     private int startPositionX, startPositionY;
+    private int finishPositionX, finishPositionY;
 
     protected Level(int width, int height,
                     int startX, int startY,
@@ -128,11 +129,6 @@ public class Level implements Renderable, Collisional {
                                 tileMap[j][i] = TileType.CROSS_WALLS.getNum();
                                 break;
                         }
-
-
-
-
-//                        tileMap[j][i] = TileType.WALL.getNum();
                         break;
                     case 5: // start point
                         tileMap[j][i] = TileType.CLOSED_DOOR.getNum();
@@ -141,7 +137,8 @@ public class Level implements Renderable, Collisional {
                         break;
                     case 7: // end point
                         tileMap[j][i] = TileType.OPENED_DOOR.getNum();
-
+                        finishPositionX = i * tiles.get(TileType.OPENED_DOOR).getWidth();
+                        finishPositionY = j * tiles.get(TileType.OPENED_DOOR).getHeight();
                         break;
                 }
             }
@@ -156,6 +153,10 @@ public class Level implements Renderable, Collisional {
     public int getStartPositionY() {
         return startPositionY;
     }
+
+    public int getFinishPositionX() { return finishPositionX; }
+
+    public int getFinishPositionY() { return finishPositionY; }
 
     public TileType getTileType(int x, int y) {
         return TileType.fromNum(tileMap[y / tiles.get(TileType.GRASS).getHeight()][x / tiles.get(TileType.GRASS).getWidth()]);
